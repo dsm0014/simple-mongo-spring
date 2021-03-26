@@ -1,0 +1,15 @@
+spring:
+  healthcheckEndpoint: /api/health
+  replicas: 1
+  docker:
+    repository: ""
+    image: openjdk
+    tag: 11-jre-slim
+
+mongo:
+  dbname: simple
+  replicas: 1
+  port: 27017
+  docker:
+    image: mongo
+    tag: latest
