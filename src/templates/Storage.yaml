@@ -18,8 +18,6 @@ spec:
   storageClassName: local-storage
   hostPath:
     path: "/mnt/data"
-  nodeAffinity:
-    app: {{ .Release.Name }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
