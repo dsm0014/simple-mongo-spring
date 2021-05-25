@@ -3,12 +3,12 @@ entries:
   simple-mongo-spring:
   - apiVersion: v2
     appVersion: 1.0.0-SNAPSHOT
-    created: "2021-05-25T12:47:21.5890721-05:00"
+    created: "2021-05-25T12:51:49.2544317-05:00"
     description: A Helm chart for simple Spring Boot MongoDB applications.
-    digest: 84cf690df090e4a34ae05e605e2f029f03e0785b9e4909b7e0b6182186ac934c
+    digest: e7e376be932bdc876fdd71cf0a3ad6323a275a48e3a4f42ede502f808c80ecac
     name: simple-mongo-spring
     type: application
     urls:
     - https://dsm0014.github.io/simple-mongo-spring/simple-mongo-spring-1.0.5.tgz
     version: 1.0.5
-generated: "2021-05-25T12:47:21.5880702-05:00"
+generated: "2021-05-25T12:51:49.2544317-05:00"
