@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: mongo-{{ .Release.Name }}
 spec:
+  type: ClusterIP
   ports:
     - port: {{ .Values.mongo.port }}
       targetPort: {{ .Values.mongo.port }}
