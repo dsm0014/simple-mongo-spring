@@ -2,17 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: spring-{{ .Release.Name }}-service
-  annotations:
-    service.beta.kubernetes.io/do-loadbalancer-healthcheck-port: "8080"
-    service.beta.kubernetes.io/do-loadbalancer-healthcheck-protocol: "http"
-    service.beta.kubernetes.io/do-loadbalancer-healthcheck-path: {{ .Values.spring.healthcheckEndpoint }}
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: spring-{{ .Release.Name }}
   ports:
-    - port: 80
-      targetPort: 8080
+    - port: {{ .Values.spring.svc.port }}
+      targetPort: {{ .Values.spring.port }}
 
 ---
 apiVersion: apps/v1
@@ -36,7 +32,7 @@ spec:
           image: {{ .Values.spring.docker.repository }}/{{ .Values.spring.docker.image }}:{{ .Values.spring.docker.tag }}
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: {{ .Values.spring.port }}
           env:
             - name: MONGO_URL
               value: mongodb://mongo-{{ .Release.Name }}-service:{{ .Values.mongo.port | default 27017 }}/{{ .Values.mongo.dbname }}
@@ -44,10 +40,10 @@ spec:
           livenessProbe:
             httpGet:
               path: {{ .Values.spring.healthcheckEndpoint }}
-              port: 8080
+              port: {{ .Values.spring.port }}
               httpHeaders:
                 - name: Content-Type
                   value: application/json
             initialDelaySeconds: 10
-            periodSeconds: 5
+            periodSeconds: 15
 

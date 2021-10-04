@@ -1,6 +1,11 @@
+storage: 50Mi
+
 spring:
   healthcheckEndpoint: /api/health
   replicas: 1
+  port: 8080
+  svc:
+    port: 80
   docker:
     repository: ""
     image: openjdk
