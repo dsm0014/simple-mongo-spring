@@ -12,7 +12,6 @@ spring:
   svc:
     port: 80
   docker:
-    repository: ""
     image: openjdk
     tag: 11-jre-slim
 

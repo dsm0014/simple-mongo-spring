@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: spring-{{ .Release.Name }}
-          image: {{ .Values.spring.docker.repository }}/{{ .Values.spring.docker.image }}:{{ .Values.spring.docker.tag }}
+          image: {{ .Values.spring.docker.image }}:{{ .Values.spring.docker.tag }}
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.spring.port }}
